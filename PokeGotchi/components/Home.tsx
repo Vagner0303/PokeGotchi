@@ -2,9 +2,12 @@ import { StyleSheet, View } from 'react-native'
 import React from 'react'
 import { Text, Card } from 'react-native-paper'
 
-const Home = ({ route }: any) => {
-  const { nome, imagem, tipo, altura, peso } = route.params
 
+const Home = ({ route }: any) => {
+  const { nome, imagem, tipo, altura, peso, nivel } = route.params
+  
+
+  console.log("Altura: " + altura)
   return (
     <View style={styles.container}>
       <Card style={styles.card}>
@@ -89,15 +92,15 @@ const styles = StyleSheet.create({
   altura: {
     display:'flex',
     color: '#000000ff',
-    backgroundColor:'red',
-    
-   
+    top:-28,
+    right:160
   },
 
   peso: {
     display:'flex',
     color: '#000000ff',
-    backgroundColor:'red',
-    
-  }
+    top:-45,
+    right:45
+  },
+
 })

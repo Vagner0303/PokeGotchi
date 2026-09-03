@@ -15,7 +15,7 @@ export default function EscolhaScreen({ navigation }: any) {
         <Card key={pokemon.name} style={styles.card}>
           <Card.Title
             title={pokemon.name}
-            titleStyle={{ color: '#ffffffff', textTransform: 'capitalize' }}
+            titleStyle={{  color: '#ffffffff', textTransform: 'capitalize' }}
           />
           <Card.Cover source={{ uri: pokemon.imagem }} style={styles.imagem} />
           <Card.Actions>
