@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { BackHandler, ScrollView, StyleSheet, View } from 'react-native';
 import { Button, Text, Card, ActivityIndicator } from 'react-native-paper';
 import { useBuscarPokemonsPorNome } from '../utils/useBuscarPokemons';
 
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     right:100,
   },
   imagem: {
-    backgroundColor: '#fa3b0bff',
+    backgroundColor: '#ffffffff',
     width:130,
   },
   titulo: {
@@ -70,9 +70,11 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     top:10,
     left:220,
+    backgroundColor: 'blue'
   },
 
   loading: {
+    backgroundColor: 'red',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -80,8 +82,8 @@ const styles = StyleSheet.create({
 
   btn: {
     color:'black',
-    backgroundColor:'#ffff',
-    borderRadius:10
-    
+    backgroundColor:'#ffffffff',
+    borderRadius:10,
+    justifyContent: "center"
   }
 })
