@@ -1,0 +1,79 @@
+import * as React from 'react';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import { Button, Text, Card, ActivityIndicator } from 'react-native-paper';
+import { useBuscarPokemonsPorNome } from '../utils/useBuscarPokemons';
+
+const NOMES_POKEMONS = ['bulbasaur', 'charmander', 'squirtle']
+
+export default function EscolhaScreen({ navigation }: any) {
+  const { pokemons, carregando } = useBuscarPokemonsPorNome(NOMES_POKEMONS)
+
+  if (carregando) {
+    return (
+      <View style={styles.loading}>
+        <ActivityIndicator size="large" />
+      </View>
+    )
+  }
+
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.titulo}>Escolha um Pokemon</Text>
+      {pokemons.map((pokemon) => (
+        <Card key={pokemon.name} style={styles.card}>
+          <Card.Title
+            title={pokemon.name}
+            titleStyle={{ color: '#fff', textTransform: 'capitalize' }}
+          />
+          <Card.Cover source={{ uri: pokemon.imagem }} style={styles.imagem} />
+          <Card.Actions>
+            <Button onPress={() => navigation.navigate('Home', {
+              nome: pokemon.name,
+              imagem: pokemon.imagem,
+              tipo: pokemon.tipo,
+            })}>
+              Escolher
+            </Button>
+          </Card.Actions>
+        </Card>
+      ))}
+    </ScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 16,
+    gap: 16,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    top:10
+  },
+  card: {
+    display:'flex',
+    marginBottom: 16,
+    backgroundColor: '#050e3fff',
+    width: 130,
+    alignItems: 'center',
+    top:200,
+    right:100,
+  },
+  imagem: {
+    backgroundColor: '#fff',
+  },
+  titulo: {
+    display:'flex',
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 16,
+    top:10,
+    left:220,
+  },
+
+  loading: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+})
