@@ -23,11 +23,11 @@ export default function EscolhaScreen({ navigation }: any) {
         <Card key={pokemon.name} style={styles.card}>
           <Card.Title
             title={pokemon.name}
-            titleStyle={{ color: '#fff', textTransform: 'capitalize' }}
+            titleStyle={{ color: '#ffffffff', textTransform: 'capitalize' }}
           />
           <Card.Cover source={{ uri: pokemon.imagem }} style={styles.imagem} />
           <Card.Actions>
-            <Button onPress={() => navigation.navigate('Home', {
+            <Button style={styles.btn} onPress={() => navigation.navigate('Home', {
               nome: pokemon.name,
               imagem: pokemon.imagem,
               tipo: pokemon.tipo,
@@ -52,14 +52,15 @@ const styles = StyleSheet.create({
   card: {
     display:'flex',
     marginBottom: 16,
-    backgroundColor: '#050e3fff',
+    backgroundColor: '#fa3b0bff',
     width: 130,
     alignItems: 'center',
     top:200,
     right:100,
   },
   imagem: {
-    backgroundColor: '#fff',
+    backgroundColor: '#fa3b0bff',
+    width:130,
   },
   titulo: {
     display:'flex',
@@ -76,4 +77,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
+  btn: {
+    color:'black',
+    backgroundColor:'#ffff',
+    borderRadius:10
+    
+  }
 })
