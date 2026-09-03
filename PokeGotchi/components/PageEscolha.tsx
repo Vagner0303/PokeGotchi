@@ -6,15 +6,7 @@ import { useBuscarPokemonsPorNome } from '../utils/useBuscarPokemons';
 const NOMES_POKEMONS = ['bulbasaur', 'charmander', 'squirtle']
 
 export default function EscolhaScreen({ navigation }: any) {
-  const { pokemons, carregando } = useBuscarPokemonsPorNome(NOMES_POKEMONS)
-
-  if (carregando) {
-    return (
-      <View style={styles.loading}>
-        <ActivityIndicator size="large" />
-      </View>
-    )
-  }
+  const { pokemons } = useBuscarPokemonsPorNome(NOMES_POKEMONS)
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
