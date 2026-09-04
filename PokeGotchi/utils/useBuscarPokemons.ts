@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { buscarVariosPokemons, buscarListaPokemons } from '../services/pokemonApi'
+import { buscarPokemons, buscarListaPokemons } from '../services/pokemonApi'
 import { PokemonInfo } from '../types/pokemon'
 
 export function useBuscarPokemonsPorNome(nomes: (string | number)[]) {
@@ -10,7 +10,7 @@ export function useBuscarPokemonsPorNome(nomes: (string | number)[]) {
         async function carregar() {
             try {
                 setCarregando(true)
-                const infos = await buscarVariosPokemons(nomes)
+                const infos = await buscarPokemons(nomes)
                 setPokemons(infos)
             } catch (erro) {
                 console.log('Deu merda: ', erro)
