@@ -15,7 +15,7 @@ export default function EscolhaScreen({ navigation }: any) {
         <Card key={pokemon.name} style={styles.card}>
           <Card.Title
             title={pokemon.name}
-            titleStyle={{ color: '#ffffffff', textTransform: 'capitalize' }}
+            titleStyle={{ color: '#ffffffff', textTransform: 'capitalize', left: 5 }}
           />
           <Card.Cover source={{ uri: pokemon.imagem }} style={styles.imagem} />
           <Card.Actions>
@@ -24,7 +24,7 @@ export default function EscolhaScreen({ navigation }: any) {
               imagem: pokemon.imagem,
               tipo: pokemon.tipo,
             })}>
-              Escolher
+              <Text style={styles.escolher}>Escolher</Text>
             </Button>
           </Card.Actions>
         </Card>
@@ -44,15 +44,19 @@ const styles = StyleSheet.create({
   card: {
     display:'flex',
     marginBottom: 16,
-    backgroundColor: '#fa3b0bff',
-    width: 130,
+    backgroundColor: '#fa0b0bff',
+    width: 190,
     alignItems: 'center',
     top:200,
     right:100,
+    borderColor: 'black',
+    borderWidth: 4
   },
   imagem: {
-    backgroundColor: '#ffffffff',
+    backgroundColor: '#000000ff',
     width:130,
+    borderColor: 'white',
+    borderWidth: 2
   },
   titulo: {
     display:'flex',
@@ -61,8 +65,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 16,
     top:10,
-    left:220,
-    backgroundColor: 'blue'
+    left:300,
   },
 
   loading: {
@@ -74,8 +77,15 @@ const styles = StyleSheet.create({
 
   btn: {
     color:'black',
-    backgroundColor:'#ffffffff',
+    backgroundColor:'#27c022ff',
     borderRadius:10,
-    justifyContent: "center"
+    right: 5,
+    borderColor: 'black',
+    borderWidth: 2
+  },
+
+  escolher: {
+    fontFamily: 'arial',
+    fontWeight: 'bold'
   }
 })
