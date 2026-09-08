@@ -29,7 +29,7 @@ const Home = ({ route }: any) => {
       <Card style={styles.card}>
         <Card.Title
           title={name}
-          titleStyle={{ color: '#fff', textTransform: 'capitalize', width: 0 }}
+          titleStyle={{ display: 'flex', color: '#fff', textTransform: 'capitalize', width: 100, left:90 }}
         />
         <Card.Cover source={{ uri: imagem }} style={styles.imagem} />
       </Card>
@@ -37,7 +37,7 @@ const Home = ({ route }: any) => {
       <Card style={styles.cardInfo}>
         <Card.Title
           title={name}
-          titleStyle={{ color: '#000000ff', fontWeight: '900', textTransform: 'capitalize', fontSize: 19, right: 160, width: 120, top: 4 }}
+          titleStyle={{ color: '#000000ff', fontWeight: '900', textTransform: 'capitalize', fontSize: 19, right: 140, width: 120, top: 4 }}
         />
         <Card.Content>
 
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     borderRadius:20,
     width:60,
     top:-46,
-    left:170,
+    left:190,
     padding:5,
     backgroundColor:'#ff7301ff',
     fontWeight:700,
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     display:'flex',
     color: '#000000ff',
     top:-28,
-    right:160
+    right:140
   },
 
   peso: {
@@ -138,9 +138,8 @@ const styles = StyleSheet.create({
     width: 420,
     height: 200,
     gap: 10,
+    top:10,
   },
-
-
 
   Saciedade: {
     borderStartColor: "black",
@@ -174,6 +173,8 @@ const styles = StyleSheet.create({
   acoes: {
     fontSize: 20,
     fontWeight: 'bold',
+    width: 420,
+    top:10,
   },
   
   atividades: {},
@@ -181,5 +182,5 @@ const styles = StyleSheet.create({
   brincar: {},
   dormir: {},
   limpar: {},
-  treinar: {}
+  treinar: {},
 })
