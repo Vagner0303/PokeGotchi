@@ -101,6 +101,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     top:10
   },
+  
   separacao:{
     flexDirection: 'row',
   },
