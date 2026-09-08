@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native'
 import React from 'react'
-import { Text, Card } from 'react-native-paper'
+import { Text, Card, Button } from 'react-native-paper'
 
 
 const Home = ({ route }: any) => {
@@ -38,6 +38,21 @@ const Home = ({ route }: any) => {
         </Card.Content>
       </Card>
 
+      <Card style={styles.cuidados}>
+        <Text style={styles.Saciedade}> 🍗Saciedade: {}</Text>
+        <Text style={styles.Felicidade}> 💖Felicidade: {}</Text>
+        <Text style={styles.Energia}> ⚡Energia: {}</Text>
+        <Text style={styles.Higiene}> ✨Higiene: {}</Text>
+      </Card> 
+
+      <Card style={styles.acoes}> 
+        <Text style={styles.atividades}> O QUE FAZER?</Text>
+        <Button style={styles.alimentar}> 🍜Alimentar</Button>
+        <Button style={styles.brincar}> ⚾Brincar</Button>
+        <Button style={styles.dormir}> 💤Dormir</Button>
+        <Button style={styles.limpar}> 🛁Limpar</Button>
+        <Button style={styles.treinar}> 🦾Treinar +25 EXP</Button>
+      </Card>
     </View>
   )
 }
@@ -103,4 +118,52 @@ const styles = StyleSheet.create({
     right:45
   },
 
-})
+  cuidados: {
+    display: "flex",
+    backgroundColor: "white",
+    width: 420,
+    height: 200,
+    gap: 10,
+  },
+
+
+
+  Saciedade: {
+    borderStartColor: "black",
+    width: 200,
+    height: 50,
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  Felicidade: {
+    borderStartColor: "black",
+    width: 200,
+    height: 50,
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  Energia: {
+    borderStartColor: "black",
+    width: 200,
+    height: 50,
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  Higiene: {
+    borderStartColor: "black",
+    width: 200,
+    height: 50,
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+
+  acoes: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  atividades: {},
+  alimentar: {},
+  brincar: {},
+  dormir: {},
+  limpar: {},
+  treinar: {}
