@@ -29,15 +29,15 @@ const Home = ({ route }: any) => {
       <Card style={styles.card}>
         <Card.Title
           title={name}
-          titleStyle={{ display: 'flex', color: '#fff', textTransform: 'capitalize', width: 100, left:90 }}
-        />
+          titleStyle={{ display: 'flex', color: '#fff', textTransform: 'capitalize', width: 100, left:90 }}/>
+
         <Card.Cover source={{ uri: imagem }} style={styles.imagem} />
       </Card>
 
       <Card style={styles.cardInfo}>
         <Card.Title
           title={name}
-          titleStyle={{ color: '#000000ff', fontWeight: '900', textTransform: 'capitalize', fontSize: 19, right: 140, width: 120, top: 4 }}
+          titleStyle={{ color: '#000000ff', fontWeight: '900', textTransform: 'capitalize', fontSize: 19, right: 140, width: 140, top: 4 }}
         />
         <Card.Content>
 
@@ -51,6 +51,17 @@ const Home = ({ route }: any) => {
 
           <Text style={styles.peso}>Peso: {peso} kg</Text>
         </Card.Content>
+
+         <Card.Content>
+
+          <Text style={styles.nivel}>Nivel: 5 </Text>
+        </Card.Content>
+
+        <Card.Content>
+        <Text style={styles.xp}> 
+            100 / 100  XP</Text>
+        </Card.Content>
+
       </Card>
     <Card style={styles.cuidados}>
         <Text style={styles.Saciedade}> 🍗Saciedade: {}</Text>
@@ -73,6 +84,7 @@ const Home = ({ route }: any) => {
         <Button style={styles.treinar}><Text style={styles.txtbtn}> 🦾Treinar +25 EXP</Text></Button>
       </Card>
     </View>
+    
   )
 }
 
@@ -91,7 +103,7 @@ const styles = StyleSheet.create({
     width: 420,
     alignItems: 'center',
     top:10,
-    height:300
+    height:250
   },
 
   cardInfo:{
@@ -101,7 +113,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     top:10
   },
-  
   separacao:{
     flexDirection: 'row',
   },
@@ -186,7 +197,8 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    flexDirection: "row"
+    flexDirection: "row",
+    height:240
   },
   
   atividades: {
@@ -232,5 +244,9 @@ const styles = StyleSheet.create({
   txtbtn:{
     color: "white",
     fontWeight: 900,
-  }
+  },
+
+  nivel: {color:'black'},
+
+  xp: {color:'black'},
 })
