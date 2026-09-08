@@ -61,11 +61,16 @@ const Home = ({ route }: any) => {
 
       <Card style={styles.acoes}> 
         <Text style={styles.atividades}> O QUE FAZER?</Text>
-        <Button style={styles.alimentar}> 🍜Alimentar</Button>
-        <Button style={styles.brincar}> ⚾Brincar</Button>
-        <Button style={styles.dormir}> 💤Dormir</Button>
-        <Button style={styles.limpar}> 🛁Limpar</Button>
-        <Button style={styles.treinar}> 🦾Treinar +25 EXP</Button>
+        <View style={styles.separacao}>
+        <Button style={styles.alimentar}><Text style={styles.txtbtn}> 🍜Alimentar</Text></Button>
+        <Button style={styles.brincar}><Text style={styles.txtbtn}> ⚾Brincar</Text></Button>
+        </View>
+
+          <View style={styles.separacao}>
+        <Button style={styles.dormir}><Text style={styles.txtbtn}> 💤Dormir</Text></Button>
+        <Button style={styles.limpar}><Text style={styles.txtbtn}> 🛁Limpar</Text></Button>
+        </View>
+        <Button style={styles.treinar}><Text style={styles.txtbtn}> 🦾Treinar +25 EXP</Text></Button>
       </Card>
     </View>
   )
@@ -95,6 +100,9 @@ const styles = StyleSheet.create({
     width: 420,
     alignItems: 'center',
     top:10
+  },
+  separacao:{
+    flexDirection: 'row',
   },
 
   imagem: {
@@ -171,16 +179,57 @@ const styles = StyleSheet.create({
   },
 
   acoes: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    backgroundColor: "white",
     width: 420,
     top:10,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row"
   },
   
-  atividades: {},
-  alimentar: {},
-  brincar: {},
-  dormir: {},
-  limpar: {},
-  treinar: {},
+  atividades: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    margin: 10
+  },
+  alimentar: {
+    backgroundColor: "#e21818ff",
+    width: 150,
+    margin: 10,
+    borderRadius: 15,
+    fontSize: 10,
+  },
+  brincar: {
+    backgroundColor: "#1da51dff",
+    width: 150,
+    margin: 10,
+    borderRadius: 15,
+    fontSize: 10,
+  },
+  dormir: {
+    backgroundColor: "#af4ce9ff",
+    width: 150,
+    margin: 10,
+    borderRadius: 15,
+    fontSize: 10,
+  },
+  limpar: {
+    backgroundColor: "#21a5e2ff",
+    width: 150,
+    margin: 10,
+    borderRadius: 15,
+    fontSize: 10,
+  },
+  treinar: {
+    backgroundColor: "#234fdfff",
+    width: "100%",
+    marginTop: 10,
+    borderRadius: 15,
+    fontSize: 10,
+  },
+  txtbtn:{
+    color: "white",
+    fontWeight: 900,
+  }
 })
