@@ -1,3 +1,4 @@
+// Define quais informações o Pokémon possui
 export interface PokemonStatus {
   fome: number
   saciedade: number
@@ -9,7 +10,10 @@ export interface PokemonStatus {
   ultimaAtualizacao: number
 }
 
+
+// Define os valores iniciais do Pokémon
 export const STATUS_INICIAL: PokemonStatus = {
+
   fome: 0,
   saciedade: 100,
   felicidade: 100,
@@ -17,5 +21,8 @@ export const STATUS_INICIAL: PokemonStatus = {
   higiene: 100,
   nivel: 1,
   xp: 0,
+
+  // Guarda o horário atual
   ultimaAtualizacao: Date.now(),
+
 }

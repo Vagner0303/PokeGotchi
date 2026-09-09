@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { PokemonStatus, STATUS_INICIAL } from '../types/pokemonStatus'
 
+
+// Define a velocidade que os status diminuem ou aumentam com o tempo
 const TAXA = {
   fome: 5,
   saciedade: -3,
@@ -10,12 +12,18 @@ const TAXA = {
   higiene: -2,
 }
 
+
+// Impede que os status fiquem abaixo de 0 ou acima de 100
 const clamp = (valor: number) =>
   Math.max(0, Math.min(100, valor))
 
+
+// Cria uma chave para salvar os dados de cada Pokémon separadamente
 const chave = (nome: string) =>
   `@pokemon_status_${nome}`
 
+
+// Atualiza os status automaticamente de acordo com o tempo que passou
 function atualizarTempo(status: PokemonStatus) {
   const minutos =
     (Date.now() - status.ultimaAtualizacao) / 60000
@@ -30,15 +38,22 @@ function atualizarTempo(status: PokemonStatus) {
   }
 }
 
+
+// Hook responsável por controlar toda a vida e os status do Pokémon
 export function usePokemonStatus(nome: string) {
+
+  // Guarda os status atuais do Pokémon
   const [status, setStatus] = useState<PokemonStatus>({
     ...STATUS_INICIAL,
     ultimaAtualizacao: Date.now(),
   })
 
+
+  // Controla o carregamento dos dados salvos
   const [carregando, setCarregando] = useState(true)
 
-  // Carrega os dados salvos
+
+  // Carrega os dados do Pokémon salvos no celular
   useEffect(() => {
     AsyncStorage.getItem(chave(nome)).then((dados) => {
       if (dados) {
@@ -49,7 +64,8 @@ export function usePokemonStatus(nome: string) {
     })
   }, [nome])
 
-  // Atualiza os números a cada segundo
+
+  // Atualiza os status em tempo real a cada segundo
   useEffect(() => {
     const intervalo = setInterval(() => {
       setStatus((atual) => atualizarTempo(atual))
@@ -58,7 +74,8 @@ export function usePokemonStatus(nome: string) {
     return () => clearInterval(intervalo)
   }, [])
 
-  // Salva a cada 10 segundos
+
+  // Salva o progresso do Pokémon automaticamente a cada 10 segundos
   useEffect(() => {
     const intervalo = setInterval(() => {
       setStatus((atual) => {
@@ -79,7 +96,8 @@ export function usePokemonStatus(nome: string) {
     return () => clearInterval(intervalo)
   }, [nome])
 
-  // Executa uma ação
+
+  // Função usada para aplicar mudanças nos status e salvar os dados
   function acao(mudancas: Partial<PokemonStatus>) {
     setStatus((atual) => {
       const novo = {
@@ -97,6 +115,8 @@ export function usePokemonStatus(nome: string) {
     })
   }
 
+
+  // Alimenta o Pokémon, diminuindo a fome e aumentando a saciedade
   function alimentar() {
     setStatus((atual) => {
       const novo = {
@@ -111,6 +131,8 @@ export function usePokemonStatus(nome: string) {
     })
   }
 
+
+  // Brincar aumenta a felicidade, mas gasta energia e aumenta a fome
   function brincar() {
     acao({
       felicidade: clamp(status.felicidade + 20),
@@ -119,6 +141,8 @@ export function usePokemonStatus(nome: string) {
     })
   }
 
+
+  // Dormir recupera energia, mas diminui um pouco a higiene
   function dormir() {
     acao({
       energia: clamp(status.energia + 40),
@@ -126,12 +150,16 @@ export function usePokemonStatus(nome: string) {
     })
   }
 
+
+  // Limpar aumenta a higiene do Pokémon
   function limpar() {
     acao({
       higiene: clamp(status.higiene + 30),
     })
   }
 
+
+  // Treinar aumenta o XP, pode subir o nível e gasta energia
   function treinar() {
     setStatus((atual) => {
       let xp = atual.xp + 25
@@ -160,6 +188,8 @@ export function usePokemonStatus(nome: string) {
     })
   }
 
+
+  // Disponibiliza os status e as ações para a Home
   return {
     status,
     carregando,

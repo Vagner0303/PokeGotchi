@@ -4,11 +4,19 @@ import { Text, Card, Button, ProgressBar } from 'react-native-paper'
 import { useBuscarPokemon } from '../utils/useBuscarPokemons'
 import { usePokemonStatus } from '../utils/usePokemonStatus'
 
+
+// Cria a tela principal do Pokémon
 const Home = ({ route }: any) => {
+
+  // Pega o nome do Pokémon enviado pela tela anterior
   const { nome } = route.params
 
+
+  // Busca as informações do Pokémon na API
   const { pokemon, carregando } = useBuscarPokemon(nome)
 
+
+  // Pega os status e as ações do Pokémon
   const {
     status,
     carregando: carregandoStatus,
@@ -19,6 +27,8 @@ const Home = ({ route }: any) => {
     treinar,
   } = usePokemonStatus(nome)
 
+
+  // Mostra uma tela de carregamento enquanto os dados não estiverem prontos
   if (carregando || !pokemon || carregandoStatus) {
     return (
       <View style={styles.container}>
@@ -27,6 +37,8 @@ const Home = ({ route }: any) => {
     )
   }
 
+
+  // Pega as informações principais do Pokémon
   const { name, imagem, tipo, altura, peso } = pokemon
 
   return (

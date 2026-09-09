@@ -1,36 +1,40 @@
 import * as React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { Button, Text, Card } from 'react-native-paper';
-import { useBuscarPokemonsPorNome } from '../utils/useBuscarPokemons';
+import { useBuscarListaPokemons } from '../utils/useBuscarPokemons';
 
-// Lista fixa de pokémons que serão exibidos como opções
-const NOMES_POKEMONS = ['bulbasaur', 'charmander', 'squirtle']
-
-// Tela de escolha — `navigation` vem do React Navigation, usado pra trocar de tela
 export default function EscolhaScreen({ navigation }: any) {
-  // Busca os dados completos (nome, imagem, tipo, altura, peso) dos 3 pokémons da lista
-  const { pokemons } = useBuscarPokemonsPorNome(NOMES_POKEMONS)
+  const { pokemons } = useBuscarListaPokemons();
 
   return (
-
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.titulo}>Escolha um Pokemon</Text>
-
 
       {pokemons.map((pokemon) => (
         <Card key={pokemon.name} style={styles.card}>
           <Card.Title
             title={pokemon.name}
-            titleStyle={{ color: '#ffffffff', textTransform: 'capitalize', left: 5 }}
+            titleStyle={{
+              color: '#ffffffff',
+              textTransform: 'capitalize',
+              left: 5
+            }}
           />
 
-          <Card.Cover source={{ uri: pokemon.imagem }} style={styles.imagem} />
+          <Card.Cover
+            source={{ uri: pokemon.imagem }}
+            style={styles.imagem}
+          />
 
           <Card.Actions>
-          
-            <Button style={styles.btn} onPress={() => navigation.navigate('Home', {
-              nome: pokemon.name,
-            })}>
+            <Button
+              style={styles.btn}
+              onPress={() =>
+                navigation.navigate('Home', {
+                  nome: pokemon.name
+                })
+              }
+            >
               <Text style={styles.escolher}>Escolher</Text>
             </Button>
           </Card.Actions>
@@ -44,27 +48,30 @@ const styles = StyleSheet.create({
   container: {
     padding: 16,
     gap: 16,
-    flexDirection: 'row',   
+    flexDirection: 'row',
     justifyContent: 'center',
     top: 10
   },
+
   card: {
     display: 'flex',
     marginBottom: 16,
     backgroundColor: '#fa0b0bff',
     width: 190,
     alignItems: 'center',
-    top: 200,   
-    right: 100,   
+    top: 200,
+    right: 100,
     borderColor: 'black',
     borderWidth: 4
   },
+
   imagem: {
     backgroundColor: '#000000ff',
     width: 130,
     borderColor: 'white',
     borderWidth: 2
   },
+
   titulo: {
     display: 'flex',
     fontSize: 20,
@@ -72,18 +79,19 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 16,
     top: 10,
-    left: 300,
+    left: 300
   },
+
   btn: {
-    color: 'black',
     backgroundColor: '#27c022ff',
     borderRadius: 10,
     right: 5,
     borderColor: 'black',
     borderWidth: 2
   },
+
   escolher: {
     fontFamily: 'arial',
     fontWeight: 'bold'
   }
-})
+});
